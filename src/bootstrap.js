@@ -1,20 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import reducers from "./reducers";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+//import rootReducer from './reducers';
+
+import reducers from './reducers';
 
 import Home from "./components/home";
 import Results from "./components/results";
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
 import "./style/main.scss";
+//Da error con esta linea
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+
+/* const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk) 
+);
+ */
 
 function main() {
   ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
+   // <Provider store={store}>
+   <Provider store={createStoreWithMiddleware(reducers)}> 
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={Home}/>
@@ -27,3 +37,4 @@ function main() {
 }
 
 document.addEventListener("DOMContentLoaded", main);
+
