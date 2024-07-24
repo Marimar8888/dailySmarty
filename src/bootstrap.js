@@ -13,18 +13,19 @@ import Results from "./components/results";
 
 import "./style/main.scss";
 //Da error con esta linea
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-
-/* const store = createStore(
-  rootReducer,
+//const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+//const store = createStore(reducers);
+const store = createStore(
+  reducers,
   applyMiddleware(thunk) 
 );
- */
+ 
+
 
 function main() {
   ReactDOM.render(
-   // <Provider store={store}>
-   <Provider store={createStoreWithMiddleware(reducers)}> 
+    <Provider store={store}>
+   {/* <Provider store={createStoreWithMiddleware(reducers)}>  */}
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={Home}/>
