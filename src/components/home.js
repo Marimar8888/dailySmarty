@@ -7,15 +7,20 @@ import SearchBar from './searchBar';
 
 export default class Home extends Component {
 
-  render() {
-    return (
-      <div className='app'>
-        <div>
-          <Logo />
-          <SearchBar/>
-          <RecentPosts/>
-        </div>
+  handleSearchBarSubmit(query) {
+    console.log('trying to handle submit for query', query);
+    this.props.history.push('/results');
+}
+
+render() {
+  return (
+    <div>
+      <div>
+        <Logo/>
+        <SearchBar onSubmit={(query) => this.handleSearchBarSubmit(query)}/>
+        <RecentPosts/>
       </div>
-    );
-  }
+    </div>
+  );
+}
 }
