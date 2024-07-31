@@ -25,7 +25,7 @@ class SearchBar extends Component {
 }
 
 SearchBar = reduxForm({
-    form: 'searchBar'
+    form: 'searchBar'   
 })(SearchBar);
 
 SearchBar = withRouter(SearchBar);
